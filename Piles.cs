@@ -7,7 +7,7 @@
 
         void Piles(Cards card, int size)
         {
-            CardType = card.CardType;
+            CardType = card;
             PileSize = size;
         }
 
