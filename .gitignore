@@ -387,3 +387,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+.vs/Enjmin_Minivilles_Console/v16/.suo
+obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache

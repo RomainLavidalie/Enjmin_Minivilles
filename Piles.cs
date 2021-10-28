@@ -1,13 +1,17 @@
+
+﻿using System;
+using System.Collections.Generic;
+
 ﻿namespace Enjmin_Minivilles_Console
 {
     public class Piles
     {
-        private int CardType;
+        private string CardType;
         private int PileSize;
 
-        void Piles(Cards card, int size)
+        public Piles(Cards card, int size)
         {
-            CardType = card;
+            CardType = card.cardName;
             PileSize = size;
         }
 
