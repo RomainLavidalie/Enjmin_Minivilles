@@ -18,7 +18,7 @@ namespace Enjmin_Minivilles_Console
             ++PileSize;
         }
         
-        void RemoveCard(Cards card)
+        public void RemoveCard(Cards card)
         {
             --PileSize;
         }

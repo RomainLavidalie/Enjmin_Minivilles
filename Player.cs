@@ -16,34 +16,42 @@ namespace Enjmin_Minivilles_Console
             MoneyBalance = 3;
         }
 
-        void AddCard(string CardType)
+        Cards AddCard(string CardType)
         {
             switch (CardType)
             {
                 case "Boulangerie":
-                    PlayerCards.Add(new Boulangerie());
-                    break;
+                    Boulangerie boulangerie = new Boulangerie();
+                    PlayerCards.Add(boulangerie);
+                    return boulangerie;
                 case "Café":
-                    PlayerCards.Add(new Cafe());
-                    break;
+                    Cafe cafe = new Cafe();
+                    PlayerCards.Add(cafe);
+                    return cafe;
                 case "Champs de blé":
-                    PlayerCards.Add(new CDB());
-                    break;
+                    CDB cdb = new CDB();
+                    PlayerCards.Add(cdb);
+                    return cdb;
                 case "Ferme":
-                    PlayerCards.Add(new Ferme());
-                    break;
+                    Ferme ferme = new Ferme();
+                    PlayerCards.Add(ferme);
+                    return ferme;
                 case "Forêt":
-                    PlayerCards.Add(new Foret());
-                    break;
+                    Foret foret = new Foret();
+                    PlayerCards.Add(foret);
+                    return foret;
                 case "Restaurant":
-                    PlayerCards.Add(new Restaurant());
-                    break;
+                    Restaurant restaurant = new Restaurant();
+                    PlayerCards.Add(restaurant);
+                    return restaurant;
                 case "Stade":
-                    PlayerCards.Add(new Stade());
-                    break;
+                    Stade stade = new Stade();
+                    PlayerCards.Add(stade);
+                    return stade;
                 case "Superette":
-                    PlayerCards.Add(new Superette());
-                    break;
+                    Superette superette = new Superette();
+                    PlayerCards.Add(superette);
+                    return superette;
             }
         }
 
@@ -51,7 +59,7 @@ namespace Enjmin_Minivilles_Console
         {
             Player player = new Player(" ");
             player.AddCard(CardType);
-            game.Bank[CardType].RemoveCard();
+            game.bank[CardType].RemoveCard(AddCard(CardType));
         }
     }
 }

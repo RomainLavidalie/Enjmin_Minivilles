@@ -10,7 +10,7 @@ namespace Enjmin_Minivilles_Console
     {
         private int _nbPlayer;
         private int _nbDice;
-        public Dictionary<Piles, string> bank = new Dictionary<Piles, string>();
+        public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
         
 
         public Game(int nbPlayer, int nbDice)
@@ -41,14 +41,14 @@ namespace Enjmin_Minivilles_Console
             Piles stade = new Piles(stadeCard, 4);
             Piles superette = new Piles(superetteCard, 4);
 
-            bank.Add(boulangerie, "Boulangerie");
-            bank.Add(cafe, "Café");
-            bank.Add(cdb, "Champs de blé");
-            bank.Add(ferme, "Ferme");
-            bank.Add(foret, "Forêt");
-            bank.Add(restaurant, "Restaurant");
-            bank.Add(stade, "Stade");
-            bank.Add(superette, "Superette");
+            bank.Add("Boulangerie", boulangerie);
+            bank.Add("Café", cafe);
+            bank.Add("Champs de blé", cdb);
+            bank.Add("Ferme", ferme);
+            bank.Add("Forêt", foret);
+            bank.Add("Restaurant", restaurant);
+            bank.Add("Stade", stade);
+            bank.Add("Superette", superette);
         }
 
 
