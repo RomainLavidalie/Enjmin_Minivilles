@@ -1,8 +1,6 @@
-
-﻿using System;
+using System;
 using System.Collections.Generic;
-
-﻿namespace Enjmin_Minivilles_Console
+namespace Enjmin_Minivilles_Console
 {
     public class Piles
     {
