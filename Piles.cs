@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace
+﻿namespace Enjmin_Minivilles_Console
 {
     public class Piles
     {
