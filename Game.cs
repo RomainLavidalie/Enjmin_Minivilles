@@ -10,7 +10,7 @@ namespace Enjmin_Minivilles_Console
     {
         private int _nbPlayer;
         private int _nbDice;
-        private Dictionary<Piles, string> bank = new Dictionary<Piles, string>();
+        public Dictionary<Piles, string> bank = new Dictionary<Piles, string>();
         
 
         public Game(int nbPlayer, int nbDice)
@@ -19,6 +19,7 @@ namespace Enjmin_Minivilles_Console
             _nbDice = nbDice;
           
         }
+
 
         public void Bank()
         {
@@ -50,6 +51,12 @@ namespace Enjmin_Minivilles_Console
             bank.Add(superette, "Superette");
         }
 
+
+        public void Partie()
+        {
+            
+            Console.ReadLine();
+        }
 
     }
 }

@@ -1,12 +1,15 @@
-﻿namespace Enjmin_Minivilles_Console
+﻿using System;
+using System.Collections.Generic;
+
+namespace Enjmin_Minivilles_Console
 {
     public class Player
     {
         private string name;
-        private Cards[] PlayerCards;
+        private List<Cards> PlayerCards = new List<Cards>();
         private int MoneyBalance;
 
-        void Player(string name)
+        public Player(string name)
         {
             this.name = name;
             PlayerCards = new Cards[];
@@ -17,37 +20,38 @@
         {
             switch (CardType)
             {
-                case Boulangerie:
+                case "Boulangerie":
                     PlayerCards.Add(new Boulangerie());
                     break;
-                case Cafe:
+                case "Café":
                     PlayerCards.Add(new Cafe());
                     break;
-                case CDB:
+                case "Champs de blé":
                     PlayerCards.Add(new CDB());
                     break;
-                case Ferme:
+                case "Ferme":
                     PlayerCards.Add(new Ferme());
                     break;
-                case Foret:
+                case "Forêt":
                     PlayerCards.Add(new Foret());
                     break;
-                case Restaurant:
+                case "Restaurant":
                     PlayerCards.Add(new Restaurant());
                     break;
-                case Stade:
+                case "Stade":
                     PlayerCards.Add(new Stade());
                     break;
-                case Superette:
+                case "Superette":
                     PlayerCards.Add(new Superette());
                     break;
             }
         }
 
-        void BuyCard(string CardType)
+        void BuyCard(string CardType, Game game)
         {
-            PlayerCards.AddCard(CardType);
-            Game.Bank[CardType].RemoveCard;
+            Player player = new Player(" ");
+            player.AddCard(CardType);
+            game.Bank[CardType].RemoveCard();
         }
     }
 }
