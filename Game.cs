@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Enjmin_Minivilles_Console
 {
-    class Game
+    public class Game
     {
-        private int _nbPlayer;
-        private int _nbDice;
+        public int _nbPlayer;
+        public int _nbDice;
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
         public List<Player> playerList = new List<Player>();
 
@@ -18,7 +18,7 @@ namespace Enjmin_Minivilles_Console
         {
             _nbPlayer = nbPlayer;
             _nbDice = nbDice;
-          
+            Bank();
         }
 
 
@@ -56,14 +56,34 @@ namespace Enjmin_Minivilles_Console
         public void Partie()
         {
             PlayerCreation(_nbPlayer);
+            int playerOrder = 0;
 
             foreach (Player p in playerList)
             {
                 Console.WriteLine(p.name);
             }
 
-            Console.WriteLine("{0} à toi de jouer !", playerList[0].name);
-            Console.ReadLine();
+            while(true)
+            {
+                Console.WriteLine("{0} à toi de jouer !", playerList[playerOrder].name);
+                Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)", playerList[playerOrder].name);
+                if(Int32.Parse(Console.ReadLine()) == 1)
+                {
+                    PlayerChoice(playerList[playerOrder]);
+                    break;
+                }
+                else
+                {
+                    if(playerOrder < playerList.Count)
+                    {
+                        playerOrder++;
+                    }else if(playerOrder == playerList.Count)
+                    {
+                        playerOrder = 0;
+                    }
+                }
+                Console.ReadLine();
+            }
         }
 
         public void PlayerCreation(int nb)
@@ -79,6 +99,15 @@ namespace Enjmin_Minivilles_Console
                 playerList.Add(player);
 
             }
+        }
+
+        public void PlayerChoice(Player p)
+        {
+            Game G = new Game(_nbPlayer, _nbDice);
+            string colourChoice;
+            Console.WriteLine("Choisi ton type de carte.");
+            colourChoice = Console.ReadLine();
+            p.BuyCard(colourChoice, G, p);
         }
 
         public override string ToString()

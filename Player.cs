@@ -121,9 +121,10 @@ namespace Enjmin_Minivilles_Console
             }
         }
 
-        void BuyCard(string CardType, Game game, Player player)
+        public void BuyCard(string CardType, Game game, Player player)
         {
             //Player player = new Player(" ");
+
             
             try
             {
@@ -140,6 +141,9 @@ namespace Enjmin_Minivilles_Console
             }
             game.bank[CardType].RemoveCard(AddCard(CardType, player));
         }
-
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }
