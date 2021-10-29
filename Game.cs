@@ -11,7 +11,8 @@ namespace Enjmin_Minivilles_Console
         private int _nbPlayer;
         private int _nbDice;
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
-        
+        public List<Player> playerList = new List<Player>();
+
 
         public Game(int nbPlayer, int nbDice)
         {
@@ -54,8 +55,36 @@ namespace Enjmin_Minivilles_Console
 
         public void Partie()
         {
-            
+            PlayerCreation(_nbPlayer);
+
+            foreach (Player p in playerList)
+            {
+                Console.WriteLine(p.name);
+            }
+
+            Console.WriteLine("{0} à toi de jouer !", playerList[0].name);
             Console.ReadLine();
+        }
+
+        public void PlayerCreation(int nb)
+        {
+            for (int i = 0; i < nb; i++)
+            {
+                string name;
+                Console.WriteLine("joueur {0} écrivez votre nom :", i + 1);
+                name = Console.ReadLine();
+
+                Player player = new Player(name);
+
+                playerList.Add(player);
+
+            }
+        }
+
+        public override string ToString()
+        {
+            Partie();
+            return base.ToString();
         }
 
     }
