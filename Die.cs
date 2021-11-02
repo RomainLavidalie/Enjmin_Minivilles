@@ -11,6 +11,7 @@ namespace Enjmin_Minivilles_Console
         private Random random;
         private int face;
         private List<List<int>> tableauDe = new List<List<int>>();
+        public int diceValue { get; private set; }
 
         public Die()
         {           
@@ -32,22 +33,17 @@ namespace Enjmin_Minivilles_Console
             tableauDe.Add(new List<int>{2,3,4,5,6});
         }
         
-        public int Tossing()
+        public void Tossing()
         {
-            int diceValue;
-            
             diceValue = random.Next(0, face);
-
-            return diceValue;
         }
 
         public string[] ToString()
         {
-            int Face = Tossing();
             string[] lignes = new string[5];
-            if (Face > 6)
+            if (diceValue > 6)
             {
-                return (new string[]{Face.ToString()});
+                return (new string[]{diceValue.ToString()});
             }
             else
             {
@@ -57,7 +53,7 @@ namespace Enjmin_Minivilles_Console
                     lignes[loop+1] += "|";
                     for (int loop1 = 0; loop1 < 3; loop1++)
                     {
-                        if (tableauDe[loop*3 + loop1].Contains(Face))
+                        if (tableauDe[loop*3 + loop1].Contains(diceValue))
                         {
                             lignes[loop+1] += " * ";
                         }
