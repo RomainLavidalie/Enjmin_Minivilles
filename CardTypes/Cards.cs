@@ -8,5 +8,7 @@
         public string cardName;
         public string cardColor;
         public string cardDescription;
+
+        public abstract void Effect(Player player, Player playerThrowingDice);
     }
 }

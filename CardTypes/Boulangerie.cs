@@ -13,5 +13,10 @@
                 "Uniquement pendant votre tour" +
                 "Recevez 1 pièces de la banque";
         }
+
+        public override void Effect(Player player, Player _)
+        {
+            player.MoneyBalance++;
+        }
     }
 }

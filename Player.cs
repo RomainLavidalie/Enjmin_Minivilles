@@ -7,7 +7,7 @@ namespace Enjmin_Minivilles_Console
     {
         public string name;
         private List<Cards> PlayerCards = new List<Cards>();
-        private int MoneyBalance;
+        public int MoneyBalance;
         private List<Die> DicePlayed= new List<Die>();
 
         public Player(string name)

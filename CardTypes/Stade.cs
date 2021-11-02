@@ -13,5 +13,10 @@
                 "Pendant le tour de n'importe quel joueur" +
                 "Recevez 4 pièces de la banque.";
         }
+
+        public override void Effect(Player player, Player playerThrowingDice)
+        {
+            player.MoneyBalance += 4;
+        }
     }
 }
