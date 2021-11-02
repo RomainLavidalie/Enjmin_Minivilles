@@ -109,12 +109,14 @@ namespace Enjmin_Minivilles_Console
 
         public void PlayerChoice(Player p)
         {
-            Game G = new Game(_nbPlayer, _nbDice);
+            //Game G = new Game(_nbPlayer, _nbDice);
             string colourChoice;
             Console.WriteLine("Choisi ton type de carte.");
             colourChoice = Console.ReadLine();
-            p.BuyCard(colourChoice, G, p);
+            p.BuyCard(colourChoice, this, p);
         }
+
+       
 
         public override string ToString()
         {
