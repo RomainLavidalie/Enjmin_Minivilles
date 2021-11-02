@@ -67,7 +67,12 @@ namespace Enjmin_Minivilles_Console
             {
                 Console.WriteLine("{0} à toi de jouer !", playerList[playerOrder].name);
                 Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)", playerList[playerOrder].name);
-                if(Int32.Parse(Console.ReadLine()) == 1)
+                int choix;
+                while (!Int32.TryParse(Console.ReadLine(), out choix) || choix > 2 || choix < 1)
+                {
+                    Console.Write("Mauvais format de réponse veuillez recommencer : ");
+                }
+                if(choix == 1)
                 {
                     PlayerChoice(playerList[playerOrder]);
                     break;
@@ -77,7 +82,8 @@ namespace Enjmin_Minivilles_Console
                     if(playerOrder < playerList.Count)
                     {
                         playerOrder++;
-                    }else if(playerOrder == playerList.Count)
+                    }
+                    else if(playerOrder == playerList.Count)
                     {
                         playerOrder = 0;
                     }
