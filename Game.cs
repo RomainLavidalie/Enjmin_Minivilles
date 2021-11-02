@@ -60,15 +60,16 @@ namespace Enjmin_Minivilles_Console
             PlayerCreation(_nbPlayer);
             playerOrder = 0;
 
-            foreach (Player p in playerList)
-            {
-                Console.WriteLine(p.name);
-            }
+            //foreach (Player p in playerList)
+            //{
+            //    Console.WriteLine(p.name);
+            //}
 
             while(playerList[playerOrder].MoneyBalance < 20)
             {
                 Console.WriteLine("{0} à toi de jouer !", playerList[playerOrder].name);
                 Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)", playerList[playerOrder].name);
+                Console.WriteLine("Tu as {0} pieces", playerList[playerOrder].MoneyBalance);
                 int choix;
                 while (!Int32.TryParse(Console.ReadLine(), out choix) || choix > 2 || choix < 1)
                 {
@@ -115,6 +116,7 @@ namespace Enjmin_Minivilles_Console
             Console.WriteLine("Choisi ton type de carte.");
             colourChoice = Console.ReadLine();
             p.BuyCard(colourChoice, this, p);
+            Console.WriteLine("Tu as {0} pieces", p.MoneyBalance);
         }
 
         
@@ -157,6 +159,7 @@ namespace Enjmin_Minivilles_Console
                 {
                     if(c.TestValue(d.diceValue) && (c.cardColor == color1 || c.cardColor == color2))
                     {
+                        Console.WriteLine($"{p.name} : {c.cardDescription}");
                         c.Effect(p,playerList[NextPlayer()]);
                     }
                 }

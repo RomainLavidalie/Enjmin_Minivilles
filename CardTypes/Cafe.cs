@@ -11,7 +11,7 @@ namespace Enjmin_Minivilles_Console
             cardColor = "Red";
             cardDescription = 
                     "Recevez 1 pièce du joueur" +
-                    "qui a lancé les dés.";
+                    " qui a lancé les dés.";
         }
 
         public override void Effect(Player player, Player playerThrowingDice)

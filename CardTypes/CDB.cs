@@ -10,7 +10,7 @@
             cardColor = "Blue";
             cardDescription = 
                     "Pendant le tour de n'importe quel joueur" +
-                    "Recevez 1 pièce de la banque.";
+                    " Recevez 1 pièce de la banque.";
         }
 
         public override void Effect(Player player, Player _)

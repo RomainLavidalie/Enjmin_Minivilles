@@ -4,11 +4,12 @@
     {
         public Boulangerie()
         {
+            cardValue = 1;
             cardName = "Boulangerie";
             cardColor = "Green";
             cardDescription = 
                     "Uniquement pendant votre tour" +
-                    "Recevez 1 pièces de la banque";
+                    " Recevez 1 pièces de la banque";
         }
 
         public override void Effect(Player player, Player _)
