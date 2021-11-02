@@ -17,106 +17,41 @@ namespace Enjmin_Minivilles_Console
             MoneyBalance = 3;
         }
 
-        Cards AddCard(string CardType, Player player)
+        private void AddCard(Cards card, Game game, string CardType)
+        {
+            if(card.cardValue <= MoneyBalance)
+            {
+                PlayerCards.Add(card);
+                MoneyBalance -= card.cardValue;
+                game.bank[CardType].RemoveCard(GetCard(CardType));
+            }
+            else
+            {
+                Console.WriteLine($"Vous n'avez pas assez d'argent pour acheter la carte {card.cardName}");
+            }       
+        }
+        
+        Cards GetCard(string CardType)
         {
             switch (CardType)
             {
                 case "Boulangerie":
-                    Boulangerie boulangerie = new Boulangerie();
-                    if(boulangerie.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(boulangerie);
-                        return boulangerie;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", boulangerie.cardName);
-                        return null;
-                    }                   
+                    return new Boulangerie();              
                 case "Café":
-                    Cafe cafe = new Cafe();
-                    if(cafe.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(cafe);
-                        return cafe;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", cafe.cardName);
-                        return null;
-                    }
+                    return new Cafe();
                 case "Champs de blé":
-                    CDB cdb = new CDB();
-                    if(cdb.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(cdb);
-                        return cdb;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", cdb.cardName);
-                        return null;
-                    }
+                    return new CDB();   
                 case "Ferme":
-                    Ferme ferme = new Ferme();
-                    if(ferme.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(ferme);
-                        return ferme;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", ferme.cardName);
-                        return null;
-                    }                   
+                    return new Ferme();                    
                 case "Forêt":
-                    Foret foret = new Foret();
-                    if(foret.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(foret);
-                        return foret;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", foret.cardName);
-                        return null;
-                    }                   
+                    return new Foret();
                 case "Restaurant":
-                    Restaurant restaurant = new Restaurant();
-                    if(restaurant.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(restaurant);
-                        return restaurant;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", restaurant.cardName);
-                        return null;
-                    }                    
+                    return new Restaurant();
                 case "Stade":
-                    Stade stade = new Stade();
-                    if(stade.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(stade);
-                        return stade;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", stade.cardName);
-                        return null;
-                    }                    
+                    return new Stade();
                 case "Superette":
                     Superette superette = new Superette();
-                    if(superette.cardValue <= player.MoneyBalance)
-                    {
-                        PlayerCards.Add(superette);
-                        return superette;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vous n'avez pas assez d'argent pour acheter la carte {0}", superette.cardName);
-                        return null;
-                    }                   
+                    return new Superette();
                 default:                   
                     return null;
             }
@@ -125,22 +60,20 @@ namespace Enjmin_Minivilles_Console
         public void BuyCard(string CardType, Game game, Player player)
         {
             //Player player = new Player(" ");
-
-            
-            try
+            while (true)
             {
-                player.AddCard(CardType, player);
+                try
+                {
+                    Cards card = player.GetCard(CardType);
+                    player.AddCard(card, game, CardType);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine("Choose a valid type of card");
+                }
             }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine("Choose a valid type of card");
-            }
-            finally
-            {
-                player.AddCard(CardType, player);
-            }
-            game.bank[CardType].RemoveCard(AddCard(CardType, player));
         }
 
         public void Playing(int nbDice, Game G)

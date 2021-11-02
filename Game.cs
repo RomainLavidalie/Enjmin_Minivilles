@@ -77,7 +77,7 @@ namespace Enjmin_Minivilles_Console
                 if(choix == 1)
                 {
                     PlayerChoice(playerList[playerOrder]);
-                    break;
+                    continue;
                 }
                 else
                 {
