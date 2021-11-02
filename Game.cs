@@ -87,6 +87,8 @@ namespace Enjmin_Minivilles_Console
                 Playing();
                 Console.ReadLine();
             }
+
+            Console.WriteLine($"Partie terminée, {playerList[playerOrder].name} à gagné !!");
         }
 
         public int NextPlayer()
