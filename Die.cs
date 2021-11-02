@@ -36,9 +36,7 @@ namespace Enjmin_Minivilles_Console
         
         public void Tossing()
         {
-            Debug.WriteLine(diceValue);
             diceValue = random.Next(1, face);
-            Debug.WriteLine(diceValue);
         }
 
         public string[] ToString()

@@ -25,6 +25,7 @@ namespace Enjmin_Minivilles_Console
                 PlayerCards.Add(card);
                 MoneyBalance -= card.cardValue;
                 game.bank[CardType].RemoveCard(GetCard(CardType));
+                Console.WriteLine($"Vous avez acheté {CardType}");
             }
             else
             {
@@ -70,8 +71,8 @@ namespace Enjmin_Minivilles_Console
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
                     Console.WriteLine("Choose a valid type of card");
+                    CardType = Console.ReadLine();
                 }
             }
         }

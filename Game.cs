@@ -130,7 +130,7 @@ namespace Enjmin_Minivilles_Console
 
             for (int i = 0; i < _nbDice; i++)
             {
-                Die dice = new Die(); 
+                Die dice = new Die();
                 string[] strings = dice.ToString();
                 for (int loop = 0; loop < 5; loop++)
                 {
@@ -157,7 +157,6 @@ namespace Enjmin_Minivilles_Console
                 {
                     if(c.TestValue(d.diceValue) && (c.cardColor == color1 || c.cardColor == color2))
                     {
-                        Console.WriteLine(c.cardDescription);
                         c.Effect(p,playerList[NextPlayer()]);
                     }
                 }
