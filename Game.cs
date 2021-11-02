@@ -13,6 +13,8 @@ namespace Enjmin_Minivilles_Console
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
         public List<Player> playerList = new List<Player>();
 
+        public int playerOrder { get; private set; }
+
 
         public Game(int nbPlayer, int nbDice)
         {
@@ -56,7 +58,7 @@ namespace Enjmin_Minivilles_Console
         public void Partie()
         {
             PlayerCreation(_nbPlayer);
-            int playerOrder = 0;
+            playerOrder = 0;
 
             foreach (Player p in playerList)
             {
@@ -79,12 +81,17 @@ namespace Enjmin_Minivilles_Console
                 }
                 else
                 {
-                    playerOrder = (playerOrder + 1) % _nbPlayer;
+                    playerOrder = NextPlayer();
                 }
                 Console.ReadLine();
             }
         }
 
+        public int NextPlayer()
+        {
+            return (playerOrder + 1) % _nbPlayer;
+        }
+        
         public void PlayerCreation(int nb)
         {
             for (int i = 0; i < nb; i++)
