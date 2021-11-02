@@ -15,10 +15,16 @@ namespace Enjmin_Minivilles_Console
 
             Console.WriteLine("MINIVILLE");
             Console.WriteLine("Nombre de joueurs ?");
-            nbPlayer = Int32.Parse(Console.ReadLine());
-
+            while (!Int32.TryParse(Console.ReadLine(), out nbPlayer))
+            {
+                Console.Write("Mauvais format de réponse veuillez recommencer : ");
+            }
+            
             Console.WriteLine("Nombre de dés ?");
-            nbDice = Int32.Parse(Console.ReadLine());
+            while (!Int32.TryParse(Console.ReadLine(), out nbDice))
+            {
+                Console.Write("Mauvais format de réponse veuillez recommencer : ");
+            }
 
             Game game = new Game(nbPlayer, nbDice);
 
