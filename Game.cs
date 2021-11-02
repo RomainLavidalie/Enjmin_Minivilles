@@ -65,7 +65,7 @@ namespace Enjmin_Minivilles_Console
                 Console.WriteLine(p.name);
             }
 
-            while(true)
+            while(playerList[playerOrder].MoneyBalance < 20)
             {
                 Console.WriteLine("{0} à toi de jouer !", playerList[playerOrder].name);
                 Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)", playerList[playerOrder].name);
