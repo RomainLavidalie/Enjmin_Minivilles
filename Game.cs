@@ -83,6 +83,7 @@ namespace Enjmin_Minivilles_Console
                 {
                     playerOrder = NextPlayer();
                 }
+                Playing();
                 Console.ReadLine();
             }
         }
@@ -154,25 +155,10 @@ namespace Enjmin_Minivilles_Console
             {
                 foreach(Die d in diceList)
                 {
-                    if(d.diceValue == c.diceValue && (c.cardColor == color1 || c.cardColor == color2))
+                    if(c.TestValue(d.diceValue) && (c.cardColor == color1 || c.cardColor == color2))
                     {
                         Console.WriteLine(c.cardDescription);
-                        switch (c.cardColor)
-                        {
-                            case "Blue":
-                            
-                                p.MoneyBalance += 1;
-                                break;
-                            
-                            case "Green":
-                            
-                                p.MoneyBalance += 1;
-                                break;
-                            case "Red":
-                                p.MoneyBalance -= 1;
-                                p.MoneyBalance += 1;
-                                break;
-                        }
+                        c.Effect(p,playerList[NextPlayer()]);
                     }
                 }
             }

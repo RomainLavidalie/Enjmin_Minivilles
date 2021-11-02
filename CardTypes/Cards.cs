@@ -2,7 +2,6 @@
 {
     public abstract class Cards
     {
-        public int diceValue;
         public int cardValue;
 
         public string cardName;
@@ -10,5 +9,6 @@
         public string cardDescription;
 
         public abstract void Effect(Player player, Player playerThrowingDice);
+        public abstract bool TestValue(int diceValue);
     }
 }
