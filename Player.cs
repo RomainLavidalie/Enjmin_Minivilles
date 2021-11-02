@@ -51,7 +51,6 @@ namespace Enjmin_Minivilles_Console
                 case "Stade":
                     return new Stade();
                 case "Superette":
-                    Superette superette = new Superette();
                     return new Superette();
                 default:                   
                     return null;
