@@ -79,14 +79,7 @@ namespace Enjmin_Minivilles_Console
                 }
                 else
                 {
-                    if(playerOrder < playerList.Count)
-                    {
-                        playerOrder++;
-                    }
-                    else if(playerOrder == playerList.Count)
-                    {
-                        playerOrder = 0;
-                    }
+                    playerOrder = (playerOrder + 1) % _nbPlayer;
                 }
                 Console.ReadLine();
             }
