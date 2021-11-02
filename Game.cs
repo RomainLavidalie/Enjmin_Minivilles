@@ -116,6 +116,67 @@ namespace Enjmin_Minivilles_Console
             p.BuyCard(colourChoice, this, p);
         }
 
+        
+        private void Playing()
+        {
+            string blue = "Blue";
+            string green = "Green";
+            string red = "Red";
+
+            Player player = playerList[playerOrder];
+            
+            string[] lignes = new string[5];
+
+            for (int i = 0; i < _nbDice; i++)
+            {
+                Die dice = new Die(); 
+                string[] strings = dice.ToString();
+                for (int loop = 0; loop < 5; loop++)
+                {
+                    lignes[loop] += strings[loop] + " ";
+                }
+                player.DicePlayed.Add(dice);
+            }
+            foreach (string ligne in lignes)
+            {
+                Console.WriteLine(ligne);
+            }
+            // joueur B regarde s'il peut jouer ses cartes et les joues
+            ApplyCardEffect(player.DicePlayed, playerList[NextPlayer()], blue, red);
+
+            // joueur A regarde s'il peut jouer ses cartes et les joues
+            ApplyCardEffect(player.DicePlayed, player, blue, green);
+        }
+
+        private void ApplyCardEffect(List<Die> diceList, Player p, string color1, string color2)
+        {
+            foreach(Cards c in p.PlayerCards)
+            {
+                foreach(Die d in diceList)
+                {
+                    if(d.diceValue == c.diceValue && (c.cardColor == color1 || c.cardColor == color2))
+                    {
+                        Console.WriteLine(c.cardDescription);
+                        switch (c.cardColor)
+                        {
+                            case "Blue":
+                            
+                                p.MoneyBalance += 1;
+                                break;
+                            
+                            case "Green":
+                            
+                                p.MoneyBalance += 1;
+                                break;
+                            case "Red":
+                                p.MoneyBalance -= 1;
+                                p.MoneyBalance += 1;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
        
 
         public override string ToString()

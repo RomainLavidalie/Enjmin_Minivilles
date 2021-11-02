@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Enjmin_Minivilles_Console
 {
-    class Die
+    public class Die
     {
         private Random random;
-        private int face;
+        private int face = 7;
         private List<List<int>> tableauDe = new List<List<int>>();
         public int diceValue { get; private set; }
 
         public Die()
         {           
-            face = 7;
             random = new Random();
+            Tossing();
             TabInit();
         }
 
@@ -35,7 +36,9 @@ namespace Enjmin_Minivilles_Console
         
         public void Tossing()
         {
-            diceValue = random.Next(0, face);
+            Debug.WriteLine(diceValue);
+            diceValue = random.Next(1, face);
+            Debug.WriteLine(diceValue);
         }
 
         public string[] ToString()

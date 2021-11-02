@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Enjmin_Minivilles_Console
 {
     public class Player
     {
         public string name;
-        private List<Cards> PlayerCards = new List<Cards>();
+        public List<Cards> PlayerCards { get; private set; } = new List<Cards>();
         public int MoneyBalance;
-        private List<Die> DicePlayed= new List<Die>();
+        public List<Die> DicePlayed= new List<Die>();
 
         public Player(string name)
         {
@@ -75,56 +76,7 @@ namespace Enjmin_Minivilles_Console
                 }
             }
         }
-
-        public void Playing(int nbDice, Game G)
-        {
-            string blue = "Blue";
-            string green = "Green";
-            string red = "Red";
-
-            for (int i = 0; i < nbDice; i++)
-            {
-                Die dice = new Die();                
-                DicePlayed.Add(dice);
-            }
-            // joueur B regarde si il peut jouer ses cartes et les joues
-            ApplyCardEffect(DicePlayed, G.playerList[G.NextPlayer()], blue, red);
-
-            // joueur A regarde si il peut jouer ses cartes et les joues
-            ApplyCardEffect(DicePlayed, this, blue, green);
-          
-        }
-
-        private void ApplyCardEffect(List<Die> diceList, Player p, string color1, string color2)
-        {
-            foreach(Cards c in p.PlayerCards)
-            {
-                foreach(Die d in diceList)
-                {
-                    if(d.diceValue == c.diceValue && (c.cardColor == color1 || c.cardColor == color2))
-                    {
-                        Console.WriteLine(c.cardDescription);
-                        switch (c.cardColor)
-                        {
-                            case "Blue":
-                            
-                                p.MoneyBalance += 1;
-                                break;
-                            
-                            case "Green":
-                            
-                                p.MoneyBalance += 1;
-                                break;
-                            case "Red":
-
-                                this.MoneyBalance -= 1;
-                                p.MoneyBalance += 1;
-                                break;
-                        }
-                    }
-                }
-            }
-        }
+        
         public override string ToString()
         {
             return base.ToString();
