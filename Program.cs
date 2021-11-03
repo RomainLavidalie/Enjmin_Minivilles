@@ -11,8 +11,7 @@ namespace Enjmin_Minivilles_Console
             int nbPlayer;
             int nbDice;
 
-
-
+            
             Console.WriteLine("MINIVILLE");
             Console.WriteLine("Nombre de joueurs ?");
             while (!Int32.TryParse(Console.ReadLine(), out nbPlayer))

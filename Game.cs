@@ -10,6 +10,7 @@ namespace Enjmin_Minivilles_Console
     {
         public int _nbPlayer;
         public int _nbDice;
+        private bool playWithOneDie;
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
         public List<Player> playerList = new List<Player>();
 
@@ -68,24 +69,42 @@ namespace Enjmin_Minivilles_Console
             while(playerList[playerOrder].MoneyBalance < 20)
             {
                 Console.WriteLine("{0} à toi de jouer !", playerList[playerOrder].name);
-                Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)", playerList[playerOrder].name);
-                Console.WriteLine("Tu as {0} pieces", playerList[playerOrder].MoneyBalance);
-                int choix;
-                while (!Int32.TryParse(Console.ReadLine(), out choix) || choix > 2 || choix < 1)
+                if(_nbDice>1)
                 {
-                    Console.Write("Mauvais format de réponse veuillez recommencer : ");
+                    //Dice number to play with choice
+                    Console.WriteLine($"Veux tu jouer avec un seul dé (1), ou plusieurs ? (2)");
+                    int choix;
+                    while (!Int32.TryParse(Console.ReadLine(), out choix) || choix > 2 || choix < 1)
+                    {
+                        Console.Write("Mauvais format de réponse veuillez recommencer : ");
+                    }
+
+                    playWithOneDie = (choix == 1);
                 }
-                if(choix == 1)
+                
                 {
-                    PlayerChoice(playerList[playerOrder]);
-                    continue;
+                    //Card buying choice
+                    Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)",
+                        playerList[playerOrder].name);
+                    
+                    Console.WriteLine("Tu as {0} pieces", playerList[playerOrder].MoneyBalance);
+                    int choix;
+                    
+                    while (!Int32.TryParse(Console.ReadLine(), out choix) || choix > 2 || choix < 1)
+                        Console.Write("Mauvais format de réponse veuillez recommencer : ");
+
+                    if (choix == 1)
+                    {
+                        PlayerChoice(playerList[playerOrder]);
+                        continue;
+                    }
+                    else
+                    {
+                        Playing(playerList[playerOrder]);
+                        Console.ReadLine();
+                        playerOrder = NextPlayer();
+                    }
                 }
-                else
-                {
-                    playerOrder = NextPlayer();
-                }
-                Playing();
-                Console.ReadLine();
             }
 
             Console.WriteLine($"Partie terminée, {playerList[playerOrder].name} à gagné !!");
@@ -122,13 +141,13 @@ namespace Enjmin_Minivilles_Console
         }
 
         
-        private void Playing()
+        private void Playing(Player playerIsPlaying)
         {
-            string blue = "Blue";
             string green = "Green";
             string red = "Red";
 
             Player player = playerList[playerOrder];
+            Console.WriteLine(playerOrder);
             
             string[] lignes = new string[5];
 
@@ -147,27 +166,33 @@ namespace Enjmin_Minivilles_Console
                 Console.WriteLine(ligne);
             }
             // joueur B regarde s'il peut jouer ses cartes et les joues
-            ApplyCardEffect(player.DicePlayed, playerList[NextPlayer()], blue, red);
+            ApplyCardEffect(player.DicePlayed, playerList[NextPlayer()], red);
 
             // joueur A regarde s'il peut jouer ses cartes et les joues
-            ApplyCardEffect(player.DicePlayed, player, blue, green);
+            ApplyCardEffect(player.DicePlayed, player, green);
         }
 
-        private void ApplyCardEffect(List<Die> diceList, Player p, string color1, string color2)
+        private void ApplyCardEffect(List<Die> diceList, Player p, string color)
         {
             foreach(Cards c in p.PlayerCards)
             {
-                foreach(Die d in diceList)
-                {
-                    if(c.TestValue(d.diceValue) && (c.cardColor == color1 || c.cardColor == color2))
-                    {
-                        Console.WriteLine($"{p.name} : {c.cardDescription}");
-                        c.Effect(p,playerList[NextPlayer()]);
-                    }
-                }
+                if(playWithOneDie)
+                    CardEffect(c,diceList[0],p,color);
+                else
+                    foreach(Die d in diceList)
+                        CardEffect(c,d,p,color);
             }
         }
-       
+
+        private void CardEffect(Cards c, Die d, Player p, string color)
+        {
+            if(c.TestValue(d.diceValue) && (c.cardColor == color || c.cardColor == "Blue"))
+            {
+                Console.WriteLine($"{p.name} : {c.cardDescription}");   //Debug
+                Console.WriteLine($"{p.name}, {color}");                //Debug
+                c.Effect(p,playerList[playerOrder]);
+            }
+        }
 
         public override string ToString()
         {
