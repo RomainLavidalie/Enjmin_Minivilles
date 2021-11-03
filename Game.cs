@@ -11,6 +11,7 @@ namespace Enjmin_Minivilles_Console
         public int _nbPlayer;
         public int _nbDice;
         private bool playWithOneDie;
+        private bool tossingDice;
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
         public List<Player> playerList = new List<Player>();
 
@@ -62,6 +63,7 @@ namespace Enjmin_Minivilles_Console
             DiceCreation();
             playerOrder = 0;
 
+            tossingDice = false;
             //foreach (Player p in playerList)
             //{
             //    Console.WriteLine(p.name);
@@ -82,7 +84,12 @@ namespace Enjmin_Minivilles_Console
 
                     playWithOneDie = (choix == 1);
                 }
-                
+                if (!tossingDice)
+                {
+                    Playing(playerList[playerOrder]);
+                    tossingDice = true;
+                }
+
                 {
                     //Card buying choice
                     Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)",
@@ -101,9 +108,10 @@ namespace Enjmin_Minivilles_Console
                     }
                     else
                     {
-                        Playing(playerList[playerOrder]);
+                        //Playing(playerList[playerOrder]);
                         Console.ReadLine();
                         playerOrder = NextPlayer();
+                        tossingDice = false;
                     }
                 }
             }
