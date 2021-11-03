@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Enjmin_Minivilles_Console
+namespace Enjmin_Minivilles_GFX
 {
     public class Player
     {

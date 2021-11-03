@@ -46,6 +46,15 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="CardTypes\Boulangerie.cs" />
+        <Compile Include="CardTypes\Cafe.cs" />
+        <Compile Include="CardTypes\Cards.cs" />
+        <Compile Include="CardTypes\CDB.cs" />
+        <Compile Include="CardTypes\Ferme.cs" />
+        <Compile Include="CardTypes\Foret.cs" />
+        <Compile Include="CardTypes\Restaurant.cs" />
+        <Compile Include="CardTypes\Stade.cs" />
+        <Compile Include="CardTypes\Superette.cs" />
         <Compile Include="Die.cs" />
         <Compile Include="Game.cs" />
         <Compile Include="GameWindow.cs">
@@ -91,6 +100,17 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Controls" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="assets\BackFace.png" />
+      <Content Include="assets\Boulangerie.png" />
+      <Content Include="assets\Cafe.png" />
+      <Content Include="assets\Champ de Ble.png" />
+      <Content Include="assets\Ferme.png" />
+      <Content Include="assets\Foret.png" />
+      <Content Include="assets\Restaurant.png" />
+      <Content Include="assets\Stade.png" />
+      <Content Include="assets\Superette.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
