@@ -9,5 +9,10 @@ namespace Enjmin_Minivilles_GFX
         {
             InitializeComponent();
         }
+
+        private void launchGame_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
