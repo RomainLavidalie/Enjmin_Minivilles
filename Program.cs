@@ -10,11 +10,11 @@ namespace Enjmin_Minivilles_Console
         {
             int nbPlayer;
             int nbDice;
-
+            int nbBot;
             
             Console.WriteLine("MINIVILLE");
             Console.WriteLine("Nombre de joueurs ?");
-            while (!Int32.TryParse(Console.ReadLine(), out nbPlayer))
+            while (!Int32.TryParse(Console.ReadLine(), out nbPlayer) && nbPlayer < 0)
             {
                 Console.Write("Mauvais format de réponse veuillez recommencer : ");
             }
@@ -24,8 +24,14 @@ namespace Enjmin_Minivilles_Console
             {
                 Console.Write("Mauvais format de réponse veuillez recommencer : ");
             }
+            
+            Console.WriteLine("Nombre de bots ?");
+            while (!Int32.TryParse(Console.ReadLine(), out nbBot))
+            {
+                Console.Write("Mauvais format de réponse veuillez recommencer : ");
+            }
 
-            Game game = new Game(nbPlayer, nbDice);
+            Game game = new Game(nbPlayer, nbDice, nbBot);
 
             Console.WriteLine(game);
         }

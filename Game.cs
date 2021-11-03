@@ -10,6 +10,7 @@ namespace Enjmin_Minivilles_Console
     {
         public int _nbPlayer;
         public int _nbDice;
+        public int _nbBot;
         private bool playWithOneDie;
         private bool tossingDice;
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
@@ -18,10 +19,11 @@ namespace Enjmin_Minivilles_Console
         public int playerOrder { get; private set; }
 
 
-        public Game(int nbPlayer, int nbDice)
+        public Game(int nbPlayer, int nbDice, int nbBot)
         {
             _nbPlayer = nbPlayer;
             _nbDice = nbDice;
+            _nbBot = nbBot;
             Bank();
         }
 
