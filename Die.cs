@@ -9,9 +9,9 @@ namespace Enjmin_Minivilles_Console
 {
     public class Die
     {
-        private Random random;
+        private static Random random;
         private int face = 7;
-        private List<List<int>> tableauDe = new List<List<int>>();
+        private static readonly List<List<int>> tableauDe = new List<List<int>>();
         public int diceValue { get; private set; }
 
         public Die()

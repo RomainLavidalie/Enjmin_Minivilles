@@ -58,7 +58,8 @@ namespace Enjmin_Minivilles_Console
 
         public void Partie()
         {
-            PlayerCreation(_nbPlayer);
+            PlayerCreation();
+            DiceCreation();
             playerOrder = 0;
 
             //foreach (Player p in playerList)
@@ -115,9 +116,9 @@ namespace Enjmin_Minivilles_Console
             return (playerOrder + 1) % _nbPlayer;
         }
         
-        public void PlayerCreation(int nb)
+        public void PlayerCreation()
         {
-            for (int i = 0; i < nb; i++)
+            for (int i = 0; i < _nbPlayer; i++)
             {
                 string name;
                 Console.WriteLine("joueur {0} écrivez votre nom :", i + 1);
@@ -127,6 +128,16 @@ namespace Enjmin_Minivilles_Console
 
                 playerList.Add(player);
 
+            }
+        }
+        private void DiceCreation()
+        {
+            foreach (Player player in playerList)
+            {
+                for (int loop = 0; loop < _nbDice; loop++)
+                {
+                    player.DicePlayed.Add(new Die());
+                }
             }
         }
 
@@ -153,13 +164,13 @@ namespace Enjmin_Minivilles_Console
 
             for (int i = 0; i < _nbDice; i++)
             {
-                Die dice = new Die();
+                Die dice = player.DicePlayed[i];
+                dice.Tossing();
                 string[] strings = dice.ToString();
                 for (int loop = 0; loop < 5; loop++)
                 {
                     lignes[loop] += strings[loop] + " ";
                 }
-                player.DicePlayed.Add(dice);
             }
             foreach (string ligne in lignes)
             {
