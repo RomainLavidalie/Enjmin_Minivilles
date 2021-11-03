@@ -148,7 +148,7 @@ namespace Enjmin_Minivilles_Console
 
             Player player = playerList[playerOrder];
             Console.WriteLine(playerOrder);
-            
+            Console.WriteLine($"{player.name} lance les dés !");
             string[] lignes = new string[5];
 
             for (int i = 0; i < _nbDice; i++)
