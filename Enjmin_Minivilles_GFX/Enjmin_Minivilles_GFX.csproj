@@ -46,6 +46,8 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Die.cs" />
+        <Compile Include="Game.cs" />
         <Compile Include="GameWindow.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -58,6 +60,8 @@
         <Compile Include="MainMenu.Designer.cs">
           <DependentUpon>MainMenu.cs</DependentUpon>
         </Compile>
+        <Compile Include="Piles.cs" />
+        <Compile Include="Player.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <EmbeddedResource Include="MainMenu.resx">

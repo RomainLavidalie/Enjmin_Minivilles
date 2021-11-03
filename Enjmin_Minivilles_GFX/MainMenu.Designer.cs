@@ -88,7 +88,7 @@ namespace Enjmin_Minivilles_GFX
             this.launchGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.launchGame.Location = new System.Drawing.Point(87, 265);
             this.launchGame.Name = "launchGame";
-            this.launchGame.Size = new System.Drawing.Size(205, 61);
+            this.launchGame.Size = new System.Drawing.Size(205, 84);
             this.launchGame.TabIndex = 2;
             this.launchGame.Text = "Lancer la partie";
             this.launchGame.UseVisualStyleBackColor = true;
@@ -108,7 +108,6 @@ namespace Enjmin_Minivilles_GFX
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minivilles";
-            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.groupName.ResumeLayout(false);
             this.groupName.PerformLayout();
             this.ResumeLayout(false);
