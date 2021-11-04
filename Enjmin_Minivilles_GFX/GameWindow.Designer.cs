@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Enjmin_Minivilles_GFX.Properties
+namespace Enjmin_Minivilles_GFX
 {
     partial class GameWindow
     {
@@ -31,10 +31,16 @@ namespace Enjmin_Minivilles_GFX.Properties
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // GameWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1023, 546);
+            this.Name = "GameWindow";
             this.Text = "GameWindow";
+            this.ResumeLayout(false);
         }
 
         #endregion

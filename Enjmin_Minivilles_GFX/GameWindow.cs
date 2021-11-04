@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Enjmin_Minivilles_GFX.Properties
+namespace Enjmin_Minivilles_GFX
 {
     public partial class GameWindow : Form
     {
