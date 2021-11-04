@@ -71,10 +71,6 @@ namespace Enjmin_Minivilles_Console
             playerOrder = 0;
 
             tossingDice = false;
-            //foreach (Player p in playerList)
-            //{
-            //    Console.WriteLine(p.name);
-            //}
 
             while(playerList[playerOrder].MoneyBalance < 20 || aIList[aIOrder].MoneyBalance < 20)
             {
@@ -93,7 +89,7 @@ namespace Enjmin_Minivilles_Console
                 }
                 if (!tossingDice)
                 {
-                    Playing(playerList[playerOrder], aIList[aIOrder]);
+                    Playing(playerList[playerOrder]);
                     tossingDice = true;
                 }
 
@@ -123,20 +119,28 @@ namespace Enjmin_Minivilles_Console
                     }
 
                     Thread.Sleep(1000);
-                    AIPlaying(aIList[aIOrder]);
-                    int aiChoice;
-                    aiChoice = random.Next(0, 2);
-
-                    if(aiChoice == 1)
-                    {                       
-                        aIList[aIOrder].BuyCard(this, aIList[aIOrder]);
-                        aIOrder = NextAI();
+                    if(_nbBot < 1)
+                    {
+                        continue;
                     }
                     else
                     {
-                        aIOrder = NextAI();
+
+                        AIPlaying(aIList[aIOrder]);
+                        int aiChoice;
+                        aiChoice = random.Next(0, 2);
+
+                        if(aiChoice == 1)
+                        {                       
+                            aIList[aIOrder].BuyCard(this, aIList[aIOrder]);
+                            aIOrder = NextAI();
+                        }
+                        else
+                        {
+                            aIOrder = NextAI();
+                        }
+                        Thread.Sleep(1000);
                     }
-                    Thread.Sleep(1000);
                 }
 
 
@@ -204,7 +208,7 @@ namespace Enjmin_Minivilles_Console
         }
 
         
-        private void Playing(Player playerIsPlaying, AI ai) // pas sur de garder le paramètre AI
+        private void Playing(Player playerIsPlaying) // pas sur de garder le paramètre AI
         {
             string green = "Green";
             string red = "Red";
