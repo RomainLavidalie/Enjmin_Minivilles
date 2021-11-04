@@ -146,7 +146,14 @@ namespace Enjmin_Minivilles_Console
 
             }
 
-            Console.WriteLine($"Partie terminée, {playerList[playerOrder].name} à gagné !!");
+            if(playerList[playerOrder].MoneyBalance >= 20)
+            {
+                Console.WriteLine($"Partie terminée, {playerList[playerOrder].name} à gagné !!");
+            }else if(aIList[aIOrder].MoneyBalance >= 20)
+            {                
+                Console.WriteLine($"Partie terminée, l'ordinateur {aIOrder} à gagné !!");
+            }
+
         }
 
         public int NextPlayer()
