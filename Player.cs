@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Enjmin_Minivilles_Console
 {
-    public class Player
+    public class Player 
     {
         public string name;
         public List<Cards> PlayerCards { get; private set; } = new List<Cards>();

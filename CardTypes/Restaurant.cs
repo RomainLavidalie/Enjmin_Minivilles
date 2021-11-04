@@ -21,6 +21,12 @@ namespace Enjmin_Minivilles_Console
             player.MoneyBalance += Math.Min(0, playerThrowingDice.MoneyBalance - 2);
             playerThrowingDice.MoneyBalance = Math.Max(0, playerThrowingDice.MoneyBalance - 2);
         }
+        public override void Effect(AI ai, Player playerThrowingDice)
+        {
+            ai.MoneyBalance += 2;
+            ai.MoneyBalance += Math.Min(0, playerThrowingDice.MoneyBalance - 2);
+            playerThrowingDice.MoneyBalance = Math.Max(0, playerThrowingDice.MoneyBalance - 2);
+        }
 
         public override bool TestValue(int diceValue)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,11 @@ namespace Enjmin_Minivilles_Console
         private bool tossingDice;
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
         public List<Player> playerList = new List<Player>();
+        public List<AI> aIList = new List<AI>();
+        private Random random;
 
         public int playerOrder { get; private set; }
+        public int aIOrder { get; private set; }
 
 
         public Game(int nbPlayer, int nbDice, int nbBot)
@@ -25,6 +29,7 @@ namespace Enjmin_Minivilles_Console
             _nbDice = nbDice;
             _nbBot = nbBot;
             Bank();
+            random = new Random();
         }
 
 
@@ -71,39 +76,40 @@ namespace Enjmin_Minivilles_Console
             //    Console.WriteLine(p.name);
             //}
 
-            while(playerList[playerOrder].MoneyBalance < 20)
+            while(playerList[playerOrder].MoneyBalance < 20 || aIList[aIOrder].MoneyBalance < 20)
             {
                 Console.WriteLine("{0} à toi de jouer !", playerList[playerOrder].name);
                 if(_nbDice>1)
                 {
                     //Dice number to play with choice
                     Console.WriteLine($"Veux tu jouer avec un seul dé (1), ou plusieurs ? (2)");
-                    int choix;
-                    while (!Int32.TryParse(Console.ReadLine(), out choix) || choix > 2 || choix < 1)
+                    int choice;
+                    while (!Int32.TryParse(Console.ReadLine(), out choice) || choice > 2 || choice < 1)
                     {
                         Console.Write("Mauvais format de réponse veuillez recommencer : ");
                     }
 
-                    playWithOneDie = (choix == 1);
+                    playWithOneDie = (choice == 1);
                 }
                 if (!tossingDice)
                 {
-                    Playing(playerList[playerOrder]);
+                    Playing(playerList[playerOrder], aIList[aIOrder]);
                     tossingDice = true;
                 }
 
                 {
+
                     //Card buying choice
                     Console.WriteLine("{0} veux-tu acheter une carte (1), ou passer ton tour ? (2)",
                         playerList[playerOrder].name);
                     
                     Console.WriteLine("Tu as {0} pieces", playerList[playerOrder].MoneyBalance);
-                    int choix;
+                    int choice;
                     
-                    while (!Int32.TryParse(Console.ReadLine(), out choix) || choix > 2 || choix < 1)
+                    while (!Int32.TryParse(Console.ReadLine(), out choice) || choice > 2 || choice < 1)
                         Console.Write("Mauvais format de réponse veuillez recommencer : ");
 
-                    if (choix == 1)
+                    if (choice == 1)
                     {
                         PlayerChoice(playerList[playerOrder]);
                         continue;
@@ -115,7 +121,25 @@ namespace Enjmin_Minivilles_Console
                         playerOrder = NextPlayer();
                         tossingDice = false;
                     }
+
+                    Thread.Sleep(1000);
+                    AIPlaying(aIList[aIOrder]);
+                    int aiChoice;
+                    aiChoice = random.Next(0, 2);
+
+                    if(aiChoice == 1)
+                    {                       
+                        aIList[aIOrder].BuyCard(this, aIList[aIOrder]);
+                        aIOrder = NextAI();
+                    }
+                    else
+                    {
+                        aIOrder = NextAI();
+                    }
+                    Thread.Sleep(1000);
                 }
+
+
             }
 
             Console.WriteLine($"Partie terminée, {playerList[playerOrder].name} à gagné !!");
@@ -125,9 +149,19 @@ namespace Enjmin_Minivilles_Console
         {
             return (playerOrder + 1) % _nbPlayer;
         }
+        public int NextAI()
+        {
+            return (aIOrder + 1) % _nbBot;
+        }
         
         public void PlayerCreation()
         {
+            for(int i = 0; i < _nbBot; i++)
+            {
+                AI ai = new AI();
+                aIList.Add(ai);
+            }
+
             for (int i = 0; i < _nbPlayer; i++)
             {
                 string name;
@@ -149,6 +183,14 @@ namespace Enjmin_Minivilles_Console
                     player.DicePlayed.Add(new Die());
                 }
             }
+
+            foreach (AI ai in aIList)
+            {
+                for (int loop = 0; loop < _nbDice; loop++)
+                {
+                    ai.DicePlayed.Add(new Die());
+                }
+            }
         }
 
         public void PlayerChoice(Player p)
@@ -162,7 +204,7 @@ namespace Enjmin_Minivilles_Console
         }
 
         
-        private void Playing(Player playerIsPlaying)
+        private void Playing(Player playerIsPlaying, AI ai) // pas sur de garder le paramètre AI
         {
             string green = "Green";
             string red = "Red";
@@ -172,6 +214,33 @@ namespace Enjmin_Minivilles_Console
             Console.WriteLine($"{player.name} lance les dés !");
             string[] lignes = new string[5];
 
+            TossingDice(player, lignes);
+
+            // joueur B regarde s'il peut jouer ses cartes et les joues
+            ApplyCardEffect(player.DicePlayed, playerList[NextPlayer()], red);
+
+            // joueur A regarde s'il peut jouer ses cartes et les joues
+            ApplyCardEffect(player.DicePlayed, player, green);
+        }
+
+        private void AIPlaying(AI ai)
+        {
+            string green = "Green";
+            string red = "Red";
+
+            int aiNumber = aIList.IndexOf(ai);
+            Console.WriteLine($"L'ordinateur {aiNumber} lance les dés !"); // Faire en sorte que l'ordi entre dans l'ordre des joueurs
+            string[] lignes = new string[5];
+            TossingDice(ai, lignes);
+
+            ApplyCardEffect(ai.DicePlayed, aIList[NextAI()], red);
+            ApplyCardEffect(ai.DicePlayed, ai, green);
+
+            Console.WriteLine($"L'ordinateur {aiNumber} à {ai.MoneyBalance} pièces");
+        }
+
+        private void TossingDice(Player player, string[] lignes)
+        {
             for (int i = 0; i < _nbDice; i++)
             {
                 Die dice = player.DicePlayed[i];
@@ -186,11 +255,23 @@ namespace Enjmin_Minivilles_Console
             {
                 Console.WriteLine(ligne);
             }
-            // joueur B regarde s'il peut jouer ses cartes et les joues
-            ApplyCardEffect(player.DicePlayed, playerList[NextPlayer()], red);
-
-            // joueur A regarde s'il peut jouer ses cartes et les joues
-            ApplyCardEffect(player.DicePlayed, player, green);
+        }
+        private void TossingDice(AI ai, string[] lignes)
+        {
+            for (int i = 0; i < _nbDice; i++)
+            {
+                Die dice = ai.DicePlayed[i];
+                dice.Tossing();
+                string[] strings = dice.ToString();
+                for (int loop = 0; loop < 5; loop++)
+                {
+                    lignes[loop] += strings[loop] + " ";
+                }
+            }
+            foreach (string ligne in lignes)
+            {
+                Console.WriteLine(ligne);
+            }
         }
 
         private void ApplyCardEffect(List<Die> diceList, Player p, string color)
@@ -204,6 +285,17 @@ namespace Enjmin_Minivilles_Console
                         CardEffect(c,d,p,color);
             }
         }
+        private void ApplyCardEffect(List<Die> diceList, AI ai, string color)
+        {
+            foreach(Cards c in ai.AiCards)
+            {
+                if(playWithOneDie)
+                    CardEffect(c,diceList[0],ai,color);
+                else
+                    foreach(Die d in diceList)
+                        CardEffect(c,d,ai,color);
+            }
+        }
 
         private void CardEffect(Cards c, Die d, Player p, string color)
         {
@@ -212,6 +304,15 @@ namespace Enjmin_Minivilles_Console
                 Console.WriteLine($"{p.name} : {c.cardDescription}");   //Debug
                 Console.WriteLine($"{p.name}, {color}");                //Debug
                 c.Effect(p,playerList[playerOrder]);
+            }
+        }
+        private void CardEffect(Cards c, Die d, AI ai, string color)
+        {
+            if(c.TestValue(d.diceValue) && (c.cardColor == color || c.cardColor == "Blue"))
+            {
+                Console.WriteLine($"Ordinateur : {c.cardDescription}");   //Debug
+                Console.WriteLine($"Ordinateur , {color}");                //Debug
+                c.Effect(ai, playerList[playerOrder]);
             }
         }
 

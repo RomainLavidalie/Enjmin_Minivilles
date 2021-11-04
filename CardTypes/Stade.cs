@@ -17,6 +17,10 @@
         {
             player.MoneyBalance += 4;
         }
+        public override void Effect(AI ai, Player playerThrowingDice)
+        {
+            ai.MoneyBalance += 4;
+        }
 
         public override bool TestValue(int diceValue)
         {

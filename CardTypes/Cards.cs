@@ -9,6 +9,7 @@
         public string cardDescription;
 
         public abstract void Effect(Player player, Player playerThrowingDice);
+        public abstract void Effect(AI ai, Player playerThrowingDice);
         public abstract bool TestValue(int diceValue);
     }
 }

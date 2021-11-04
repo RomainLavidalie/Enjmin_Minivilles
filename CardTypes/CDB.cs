@@ -17,6 +17,10 @@
         {
             player.MoneyBalance++;
         }
+        public override void Effect(AI ai, Player _)
+        {
+            ai.MoneyBalance++;
+        }
 
         public override bool TestValue(int diceValue)
         {
