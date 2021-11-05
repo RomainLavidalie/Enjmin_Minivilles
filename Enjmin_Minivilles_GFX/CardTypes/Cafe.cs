@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Enjmin_Minivilles_Console
+namespace Enjmin_Minivilles_GFX
 {
     public class Cafe : Cards
     {
