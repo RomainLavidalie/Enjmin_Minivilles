@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Enjmin_Minivilles_GFX
 {
@@ -6,6 +7,7 @@ namespace Enjmin_Minivilles_GFX
     {
         public GameWindow()
         {
+            Game game = new Game();
             InitializeComponent();
         }
     }

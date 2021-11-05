@@ -103,6 +103,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Controls" />
+      <Folder Include="UI_Elements" />
     </ItemGroup>
     <ItemGroup>
       <Content Include="assets\BackFace.png" />
