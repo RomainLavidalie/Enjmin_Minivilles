@@ -10,6 +10,7 @@ namespace Enjmin_Minivilles_GFX
     public class Game
     {
         public int _nbPlayer;
+        public static List<Player> _playerList;
         public int _nbDice;
         public int _nbBot;
         private bool playWithOneDie;
@@ -23,9 +24,10 @@ namespace Enjmin_Minivilles_GFX
         public int aIOrder { get; private set; }
 
 
-        public Game(int nbPlayer, int nbDice, int nbBot)
+        public Game(List<Player> listPlayer, int nbPlayer, int nbDice, int nbBot)
         {
             _nbPlayer = nbPlayer;
+            _playerList = playerList;
             _nbDice = nbDice;
             _nbBot = nbBot;
             Bank();
