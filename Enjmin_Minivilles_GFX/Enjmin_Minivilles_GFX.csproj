@@ -103,19 +103,41 @@
         <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
+      <Folder Include="assets\sounds" />
       <Folder Include="Controls" />
       <Folder Include="UI_Elements" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="assets\BackFace.png" />
-      <Content Include="assets\Boulangerie.png" />
-      <Content Include="assets\Cafe.png" />
-      <Content Include="assets\Champ de Ble.png" />
-      <Content Include="assets\Ferme.png" />
-      <Content Include="assets\Foret.png" />
-      <Content Include="assets\Restaurant.png" />
-      <Content Include="assets\Stade.png" />
-      <Content Include="assets\Superette.png" />
+      <Content Include="assets\cards\BackFace.png" />
+      <Content Include="assets\cards\Boulangerie.png" />
+      <Content Include="assets\cards\Cafe.png" />
+      <Content Include="assets\cards\Champ de Ble.png" />
+      <Content Include="assets\cards\Ferme.png" />
+      <Content Include="assets\cards\Foret.png" />
+      <Content Include="assets\cards\Restaurant.png" />
+      <Content Include="assets\cards\Stade.png" />
+      <Content Include="assets\cards\Superette.png" />
+      <Content Include="assets\dice\De1.png" />
+      <Content Include="assets\dice\De2.png" />
+      <Content Include="assets\dice\De3.png" />
+      <Content Include="assets\dice\De4.png" />
+      <Content Include="assets\dice\De5.png" />
+      <Content Include="assets\dice\De6.png" />
+      <Content Include="assets\dice\DeThrow.gif" />
+      <Content Include="Resources\De1.png" />
+      <Content Include="Resources\De11.png" />
+      <Content Include="Resources\De2.png" />
+      <Content Include="Resources\De21.png" />
+      <Content Include="Resources\De3.png" />
+      <Content Include="Resources\De31.png" />
+      <Content Include="Resources\De4.png" />
+      <Content Include="Resources\De41.png" />
+      <Content Include="Resources\De5.png" />
+      <Content Include="Resources\De51.png" />
+      <Content Include="Resources\De6.png" />
+      <Content Include="Resources\De61.png" />
+      <Content Include="Resources\DeThrow.gif" />
+      <Content Include="Resources\DeThrow1.gif" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

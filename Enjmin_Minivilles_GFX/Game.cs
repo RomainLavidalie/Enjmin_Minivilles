@@ -10,7 +10,7 @@ namespace Enjmin_Minivilles_GFX
     public class Game
     {
         public int _nbPlayer;
-        public static List<Player> _playerList;
+        public List<Player> _playerList;
         public int _nbDice;
         public int _nbBot;
         private bool playWithOneDie;
@@ -18,7 +18,7 @@ namespace Enjmin_Minivilles_GFX
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
         public List<Player> playerList = new List<Player>();
         public List<AI> aIList = new List<AI>();
-        private Random random;
+        public static Random Random;
 
         public int playerOrder { get; private set; }
         public int aIOrder { get; private set; }
@@ -27,11 +27,11 @@ namespace Enjmin_Minivilles_GFX
         public Game(List<Player> listPlayer, int nbPlayer, int nbDice, int nbBot)
         {
             _nbPlayer = nbPlayer;
-            _playerList = playerList;
+            _playerList = listPlayer;
             _nbDice = nbDice;
             _nbBot = nbBot;
             Bank();
-            random = new Random();
+            Random = new Random();
         }
 
 
@@ -130,7 +130,7 @@ namespace Enjmin_Minivilles_GFX
 
                         AIPlaying(aIList[aIOrder]);
                         int aiChoice;
-                        aiChoice = random.Next(0, 2);
+                        aiChoice = Random.Next(0, 2);
 
                         if(aiChoice == 1)
                         {                       
@@ -165,45 +165,6 @@ namespace Enjmin_Minivilles_GFX
         public int NextAI()
         {
             return (aIOrder + 1) % _nbBot;
-        }
-        
-        public void PlayerCreation()
-        {
-            for(int i = 0; i < _nbBot; i++)
-            {
-                AI ai = new AI();
-                aIList.Add(ai);
-            }
-
-            for (int i = 0; i < _nbPlayer; i++)
-            {
-                string name;
-                Console.WriteLine("joueur {0} écrivez votre nom :", i + 1);
-                name = Console.ReadLine();
-
-                Player player = new Player(name);
-
-                playerList.Add(player);
-
-            }
-        }
-        private void DiceCreation()
-        {
-            foreach (Player player in playerList)
-            {
-                for (int loop = 0; loop < _nbDice; loop++)
-                {
-                    player.DicePlayed.Add(new Die());
-                }
-            }
-
-            foreach (AI ai in aIList)
-            {
-                for (int loop = 0; loop < _nbDice; loop++)
-                {
-                    ai.DicePlayed.Add(new Die());
-                }
-            }
         }
 
         public void PlayerChoice(Player p)
@@ -250,41 +211,6 @@ namespace Enjmin_Minivilles_GFX
             ApplyCardEffect(ai.DicePlayed, ai, green);
 
             Console.WriteLine($"L'ordinateur {aiNumber} à {ai.MoneyBalance} pièces");
-        }
-
-        private void TossingDice(Player player, string[] lignes)
-        {
-            for (int i = 0; i < _nbDice; i++)
-            {
-                Die dice = player.DicePlayed[i];
-                dice.Tossing();
-                string[] strings = dice.ToString();
-                for (int loop = 0; loop < 5; loop++)
-                {
-                    lignes[loop] += strings[loop] + " ";
-                }
-            }
-            foreach (string ligne in lignes)
-            {
-                Console.WriteLine(ligne);
-            }
-        }
-        private void TossingDice(AI ai, string[] lignes)
-        {
-            for (int i = 0; i < _nbDice; i++)
-            {
-                Die dice = ai.DicePlayed[i];
-                dice.Tossing();
-                string[] strings = dice.ToString();
-                for (int loop = 0; loop < 5; loop++)
-                {
-                    lignes[loop] += strings[loop] + " ";
-                }
-            }
-            foreach (string ligne in lignes)
-            {
-                Console.WriteLine(ligne);
-            }
         }
 
         private void ApplyCardEffect(List<Die> diceList, Player p, string color)

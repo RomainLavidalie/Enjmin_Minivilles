@@ -9,14 +9,12 @@ namespace Enjmin_Minivilles_GFX
 {
     public class Die
     {
-        private static Random random;
         private int face = 7;
         private static readonly List<List<int>> tableauDe = new List<List<int>>();
         public int diceValue { get; private set; }
 
         public Die()
-        {           
-            random = new Random();
+        {
             Tossing();
             TabInit();
         }
@@ -36,7 +34,7 @@ namespace Enjmin_Minivilles_GFX
         
         public void Tossing()
         {
-            diceValue = random.Next(1, face);
+            diceValue = Game.Random.Next(1, face);
         }
 
         public string[] ToString()

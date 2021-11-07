@@ -33,18 +33,18 @@ namespace Enjmin_Minivilles_GFX
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.groupName = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.playerName3 = new System.Windows.Forms.TextBox();
             this.playerName2 = new System.Windows.Forms.TextBox();
             this.playerName1 = new System.Windows.Forms.TextBox();
             this.launchGame = new System.Windows.Forms.Button();
+            this.playerName4 = new System.Windows.Forms.TextBox();
             this.groupName.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupName
             // 
             this.groupName.BackColor = System.Drawing.SystemColors.Control;
-            this.groupName.Controls.Add(this.textBox1);
+            this.groupName.Controls.Add(this.playerName4);
             this.groupName.Controls.Add(this.playerName3);
             this.groupName.Controls.Add(this.playerName2);
             this.groupName.Controls.Add(this.playerName1);
@@ -54,13 +54,6 @@ namespace Enjmin_Minivilles_GFX
             this.groupName.TabIndex = 0;
             this.groupName.TabStop = false;
             this.groupName.Text = "Noms des joueurs";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(24, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 20);
-            this.textBox1.TabIndex = 4;
             // 
             // playerName3
             // 
@@ -85,7 +78,7 @@ namespace Enjmin_Minivilles_GFX
             // 
             // launchGame
             // 
-            this.launchGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.launchGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.launchGame.Location = new System.Drawing.Point(87, 265);
             this.launchGame.Name = "launchGame";
             this.launchGame.Size = new System.Drawing.Size(205, 84);
@@ -94,11 +87,18 @@ namespace Enjmin_Minivilles_GFX
             this.launchGame.UseVisualStyleBackColor = true;
             this.launchGame.Click += new System.EventHandler(this.launchGame_Click);
             // 
+            // playerName4
+            // 
+            this.playerName4.Location = new System.Drawing.Point(24, 97);
+            this.playerName4.Name = "playerName4";
+            this.playerName4.Size = new System.Drawing.Size(150, 20);
+            this.playerName4.TabIndex = 4;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.launchGame);
             this.Controls.Add(this.groupName);
@@ -112,6 +112,8 @@ namespace Enjmin_Minivilles_GFX
             this.groupName.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.TextBox playerName4;
 
         private System.Windows.Forms.Button launchGame;
 
