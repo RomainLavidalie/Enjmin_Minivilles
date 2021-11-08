@@ -58,14 +58,16 @@ namespace Enjmin_Minivilles_GFX
             this.DiceN2 = new System.Windows.Forms.RadioButton();
             this.DiceN1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Player1Box.SuspendLayout();
             this.Player1Cards.SuspendLayout();
             this.Player2Box.SuspendLayout();
             this.Player3Box.SuspendLayout();
             this.Player3Cards.SuspendLayout();
             this.Player4Box.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dice1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dice2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.Dice1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.Dice2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Player1Box
@@ -146,7 +148,7 @@ namespace Enjmin_Minivilles_GFX
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableLayoutPanel2.Location = new System.Drawing.Point(29, 53);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -348,7 +350,7 @@ namespace Enjmin_Minivilles_GFX
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label2.Location = new System.Drawing.Point(12, 270);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(504, 135);
@@ -356,11 +358,21 @@ namespace Enjmin_Minivilles_GFX
             this.label2.Text = "PLACEHOLDER_ACTION_TEXT";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Enjmin_Minivilles_GFX.Properties.Resources.coin__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(549, 65);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(161, 161);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DiceN1);
             this.Controls.Add(this.DiceN2);
@@ -384,10 +396,13 @@ namespace Enjmin_Minivilles_GFX
             this.Player3Box.ResumeLayout(false);
             this.Player3Cards.ResumeLayout(false);
             this.Player4Box.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Dice1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dice2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.Dice1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.Dice2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.PictureBox pictureBox1;
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;

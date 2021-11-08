@@ -66,11 +66,9 @@ namespace Enjmin_Minivilles_GFX
         }
 
 
-        public void Partie()
-        {
-            PlayerCreation();
-            DiceCreation();
-            playerOrder = 0;
+        public void Partie(){
+            
+        playerOrder = 0;
 
             tossingDice = false;
 
@@ -187,8 +185,7 @@ namespace Enjmin_Minivilles_GFX
             Console.WriteLine(playerOrder);
             Console.WriteLine($"{player.name} lance les dés !");
             string[] lignes = new string[5];
-
-            TossingDice(player, lignes);
+            
 
             // joueur B regarde s'il peut jouer ses cartes et les joues
             ApplyCardEffect(player.DicePlayed, playerList[NextPlayer()], red);
@@ -205,7 +202,6 @@ namespace Enjmin_Minivilles_GFX
             int aiNumber = aIList.IndexOf(ai);
             Console.WriteLine($"L'ordinateur {aiNumber} lance les dés !"); // Faire en sorte que l'ordi entre dans l'ordre des joueurs
             string[] lignes = new string[5];
-            TossingDice(ai, lignes);
 
             ApplyCardEffect(ai.DicePlayed, aIList[NextAI()], red);
             ApplyCardEffect(ai.DicePlayed, ai, green);

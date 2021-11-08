@@ -124,6 +124,8 @@
       <Content Include="assets\dice\De5.png" />
       <Content Include="assets\dice\De6.png" />
       <Content Include="assets\dice\DeThrow.gif" />
+      <Content Include="Resources\coin.png" />
+      <Content Include="Resources\coin__1_.png" />
       <Content Include="Resources\De1.png" />
       <Content Include="Resources\De11.png" />
       <Content Include="Resources\De2.png" />
