@@ -114,7 +114,6 @@ namespace Enjmin_Minivilles_Console
                     }
                     else
                     {
-                        //Playing(playerList[playerOrder]);
                         Console.ReadLine();
                         playerOrder = NextPlayer();
                         tossingDice = false;
@@ -217,7 +216,7 @@ namespace Enjmin_Minivilles_Console
         }
 
         
-        private void Playing(Player playerIsPlaying) // pas sur de garder le paramètre AI
+        private void Playing(Player playerIsPlaying) 
         {
             string green = "Green";
             string red = "Red";
@@ -242,7 +241,7 @@ namespace Enjmin_Minivilles_Console
             string red = "Red";
 
             int aiNumber = aIList.IndexOf(ai);
-            Console.WriteLine($"L'ordinateur {aiNumber} lance les dés !"); // Faire en sorte que l'ordi entre dans l'ordre des joueurs
+            Console.WriteLine($"L'ordinateur {aiNumber} lance les dés !"); 
             string[] lignes = new string[5];
             TossingDice(ai, lignes);
 
