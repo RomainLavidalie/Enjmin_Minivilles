@@ -17,3 +17,4 @@ Nom des cartes :
 - Forêt
 - Restaurant
 - Stade
+- Superette
