@@ -29,7 +29,7 @@ namespace Enjmin_Minivilles_Console
             _nbPlayer = nbPlayer;
             _nbDice = nbDice;
             _nbBot = nbBot;
-            _choixFin = choixFin;
+            _choixFin = choixFin*10;
             Bank();
             random = new Random();
         }

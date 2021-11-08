@@ -33,7 +33,7 @@ namespace Enjmin_Minivilles_Console
             }
             
             Console.WriteLine("Choisissez votre nombre de pièces pour la victoire : 10 (1), 20 (2), 30 (3).");
-            while (!Int32.TryParse(Console.ReadLine(), out choixFin) && choixFin > 0 && choixFin < 4)
+            while (!Int32.TryParse(Console.ReadLine(), out choixFin) && choixFin < 0 && choixFin > 4)
             {
                 Console.Write("Mauvais format de réponse veuillez recommencer : ");
             }
