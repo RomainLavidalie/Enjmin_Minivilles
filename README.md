@@ -9,3 +9,11 @@ Vous pouvez trouver le rendu ici : https://github.com/RomainLavidalie/Enjmin_Min
 
 L'UML est présent dans la branche **main** pour qu'il soit immédiatement accessible, mais la version du code source utilisée dans le rendu est celle présente dans la branche **safe_cli_version**. L'UML correspond donc à la branche **safe_cli_version**.
 
+Nom des cartes : 
+- Boulangerie
+- Café
+- Champs de blé
+- Ferme
+- Forêt
+- Restaurant
+- Stade
