@@ -221,7 +221,7 @@ namespace Enjmin_Minivilles_Console
             string red = "Red";
 
             Player player = playerList[playerOrder];
-            Console.WriteLine(playerOrder);
+            //Console.WriteLine(playerOrder);
             Console.WriteLine($"{player.name} lance les dés !");
             string[] lignes = new string[5];
 
@@ -252,7 +252,12 @@ namespace Enjmin_Minivilles_Console
 
         private void TossingDice(Player player, string[] lignes)
         {
-            for (int i = 0; i < _nbDice; i++)
+            int diceCount = _nbDice;
+            if (playWithOneDie)
+            {
+                diceCount = 1;
+            }
+            for (int i = 0; i < diceCount; i++)
             {
                 Die dice = player.DicePlayed[i];
                 dice.Tossing();
@@ -269,7 +274,12 @@ namespace Enjmin_Minivilles_Console
         }
         private void TossingDice(AI ai, string[] lignes)
         {
-            for (int i = 0; i < _nbDice; i++)
+            int diceCount = _nbDice;
+            if (playWithOneDie)
+            {
+                diceCount = 1;
+            }
+            for (int i = 0; i < diceCount; i++)
             {
                 Die dice = ai.DicePlayed[i];
                 dice.Tossing();
