@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,7 @@ namespace Enjmin_Minivilles_Console
         public int _nbPlayer;
         public int _nbDice;
         public int _nbBot;
+        private int _choixFin;
         private bool playWithOneDie;
         private bool tossingDice;
         public Dictionary<string, Piles> bank = new Dictionary<string, Piles>();
@@ -23,11 +24,12 @@ namespace Enjmin_Minivilles_Console
         public int aIOrder { get; private set; }
 
 
-        public Game(int nbPlayer, int nbDice, int nbBot)
+        public Game(int nbPlayer, int nbDice, int nbBot, int choixFin)
         {
             _nbPlayer = nbPlayer;
             _nbDice = nbDice;
             _nbBot = nbBot;
+            _choixFin = choixFin;
             Bank();
             random = new Random();
         }
@@ -72,7 +74,7 @@ namespace Enjmin_Minivilles_Console
 
             tossingDice = false;
 
-            while(playerList[playerOrder].MoneyBalance < 20 || aIList[aIOrder].MoneyBalance < 20)
+            while(playerList[playerOrder].MoneyBalance < _choixFin || aIList[aIOrder].MoneyBalance < _choixFin)
             {
                 Console.WriteLine("{0} à toi de jouer !", playerList[playerOrder].name);
                 if(_nbDice>1)
